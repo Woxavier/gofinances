@@ -2,7 +2,6 @@ export default {
   colors: {
     primary: '#5636D3',
 
-
     secondary: '#FF872C',
     secondary_ligth: 'rgb(255, 135, 44, 0.3)',
 
@@ -16,5 +15,11 @@ export default {
     title: '#363F5F',
     text: '#969CB2',
     background: '#F0F2F5',
-  }
-}
+  },
+
+  metrics: {
+    halfSpace: 5,
+    space: 10,
+    doubleSpace: 20,
+  },
+};
