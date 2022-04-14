@@ -28,7 +28,7 @@ export function Dashboard() {
             <UserImage source={assets.user_image} />
             <UserInfoContainer>
               <Title>Olá,</Title>
-              <SubTitle>Rodrigo</SubTitle>
+              <SubTitle>Winicius</SubTitle>
             </UserInfoContainer>
           </RightContainer>
 
