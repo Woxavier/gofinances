@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { StatusBar } from 'react-native';
 import { ThemeContext } from 'styled-components';
 import { assets } from '../../assets';
+import { HighLightCard } from '../../components';
 
 import {
   Container,
@@ -14,6 +15,7 @@ import {
   UserContainer,
   PowerIcon,
   RightContainer,
+  CardContainer,
 } from './styles';
 
 export function Dashboard() {
@@ -35,6 +37,10 @@ export function Dashboard() {
           <PowerIcon name="power" />
         </UserContainer>
       </Header>
+      <CardContainer horizontal>
+        <HighLightCard />
+        <HighLightCard />
+      </CardContainer>
     </Container>
   );
 }

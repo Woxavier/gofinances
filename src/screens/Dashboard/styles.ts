@@ -10,7 +10,22 @@ export const Container = styled.View`
     const { colors } = theme;
 
     return css`
+      flex: 1;
       background-color: ${colors.background};
+    `;
+  }}
+`;
+
+export const CardContainer = styled.ScrollView`
+  ${props => {
+    const { theme } = props;
+    const { metrics } = theme;
+
+    return css`
+      flex: 1;
+      flex-direction: row;
+      margin-top: -200px;
+      margin-left: ${metrics.doubleSpace}px;
     `;
   }}
 `;
