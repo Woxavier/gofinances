@@ -23,7 +23,7 @@ export function Dashboard() {
 
   return (
     <Container>
-      <StatusBar backgroundColor={colors.primary} barStyle={'light-content'} />
+      <StatusBar backgroundColor={colors.primary} barStyle={'dark-content'} />
       <Header>
         <UserContainer>
           <RightContainer>
@@ -37,9 +37,25 @@ export function Dashboard() {
           <PowerIcon name="power" />
         </UserContainer>
       </Header>
-      <CardContainer horizontal>
-        <HighLightCard />
-        <HighLightCard />
+      <CardContainer horizontal showsHorizontalScrollIndicator={false}>
+        <HighLightCard
+          lastTransaction="14 de Abril de 2021"
+          title="Entrada"
+          type="input"
+          transactionValue="R$ 1900,00"
+        />
+        <HighLightCard
+          lastTransaction="12 de Junho de 2022"
+          title="Saída"
+          type="output"
+          transactionValue="R$ 1800,00"
+        />
+        <HighLightCard
+          lastTransaction="14 de Abril de 2022"
+          title="Total"
+          type="total"
+          transactionValue="R$ 1900,00"
+        />
       </CardContainer>
     </Container>
   );

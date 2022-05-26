@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -23,9 +24,11 @@ export const CardContainer = styled.ScrollView`
 
     return css`
       flex: 1;
+      padding-left: ${metrics.doubleSpace}px;
+      padding-right: ${metrics.doubleSpace}px;
       flex-direction: row;
-      margin-top: -200px;
-      margin-left: ${metrics.doubleSpace}px;
+      position: absolute;
+      margin-top: 50%;
     `;
   }}
 `;
@@ -38,6 +41,7 @@ export const Header = styled.View`
     return css`
       width: 100%;
       padding: ${metrics.doubleSpace}px;
+      padding-top: ${getStatusBarHeight() + 50}px;
       height: ${RFPercentage(42)}px;
 
       background-color: ${colors.primary};

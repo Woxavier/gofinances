@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text } from 'react-native';
+import { ThemeContext } from 'styled-components';
 
 import {
   CardValue,
@@ -10,16 +11,40 @@ import {
   TopContainer,
 } from './styles';
 
-export function HighLightCard() {
+interface HiglightCardProps {
+  title: string;
+  type: 'input' | 'output' | 'total';
+  transactionValue: string;
+  lastTransaction: string;
+}
+
+export function HighLightCard(props: HiglightCardProps) {
+  const { title, type, lastTransaction, transactionValue } = props;
+  const { colors } = useContext(ThemeContext);
+
+  function getIconValues() {
+    if (type === 'input') {
+      return { name: 'arrow-up-circle', color: colors.success };
+    }
+    if (type === 'output') {
+      return { name: 'arrow-down-circle', color: colors.attention };
+    } else {
+      return { name: 'dollar-sign', color: colors.shape };
+    }
+  }
+
+  const iconValues = getIconValues();
   return (
-    <Container>
+    <Container type={type}>
       <TopContainer>
-        <Text>Entradas</Text>
-        <Icon name="arrow-up-circle" size={40} />
+        <Text style={{ color: type !== 'total' ? colors.title : colors.shape }}>
+          {title}
+        </Text>
+        <Icon name={iconValues.name} size={40} color={iconValues.color} />
       </TopContainer>
       <ContentContainer>
-        <CardValue>R$ 17.400,00</CardValue>
-        <LastUpdate>Última entrada em 13 de Abril</LastUpdate>
+        <CardValue type={type}>{transactionValue}</CardValue>
+        <LastUpdate type={type}>{lastTransaction}</LastUpdate>
       </ContentContainer>
     </Container>
   );

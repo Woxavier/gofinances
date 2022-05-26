@@ -1,14 +1,19 @@
 import styled, { css } from 'styled-components/native';
 import { Feather } from '@expo/vector-icons';
 
-export const Container = styled.View`
+interface TransactionTypeInterface {
+  type: 'input' | 'output' | 'total';
+}
+
+export const Container = styled.View<TransactionTypeInterface>`
   ${props => {
-    const { theme } = props;
+    const { theme, type } = props;
     const { colors, metrics } = theme;
 
     return css`
-      background-color: ${colors.shape};
+      background-color: ${type === 'total' ? colors.attention : colors.shape};
       margin-right: ${metrics.doubleSpace}px;
+      height: 100%;
       width: 300px;
       padding: ${metrics.doubleSpace}px;
       border-radius: ${metrics.halfSpace}px;
@@ -22,17 +27,25 @@ export const TopContainer = styled.View`
   margin-bottom: 80px;
 `;
 
-export const CardValue = styled.Text`
-  font-size: 32px;
-`;
-
-export const LastUpdate = styled.Text`
+export const CardValue = styled.Text<TransactionTypeInterface>`
   ${props => {
-    const { theme } = props;
+    const { theme, type } = props;
     const { colors } = theme;
 
     return css`
-      color: ${colors.text};
+      font-size: 32px;
+      color: ${type !== 'total' ? colors.title : colors.shape};
+    `;
+  }}
+`;
+
+export const LastUpdate = styled.Text<TransactionTypeInterface>`
+  ${props => {
+    const { theme, type } = props;
+    const { colors } = theme;
+
+    return css`
+      color: ${type !== 'total' ? colors.title : colors.shape};
       font-size: 12px;
     `;
   }}
@@ -48,13 +61,5 @@ export const ContentContainer = styled.View`
     `;
   }}
 `;
-export const Icon = styled(Feather)`
-  ${props => {
-    const { theme } = props;
-    const { colors } = theme;
 
-    return css`
-      color: ${colors.success};
-    `;
-  }}
-`;
+export const Icon = styled(Feather)``;
