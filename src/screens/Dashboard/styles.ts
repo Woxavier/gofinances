@@ -117,3 +117,30 @@ export const PowerIcon = styled(Feather)`
 export const RightContainer = styled.View`
   flex-direction: row;
 `;
+
+export const TransactionsContainer = styled.View`
+  ${props => {
+    const { theme } = props;
+    const { metrics } = theme;
+
+    return css`
+      flex: 1;
+      padding: ${metrics.doubleSpace}px;
+      margin-top: 20%;
+    `;
+  }}
+`;
+
+export const ListTitle = styled.Text`
+  ${props => {
+    const { theme } = props;
+    const { metrics, colors } = theme;
+
+    return css`
+      color: ${colors.title};
+      margin-top: ${metrics.doubleSpace * 2}px;
+      margin-bottom: ${metrics.space}px;
+      font-size: ${metrics.doubleSpace}px;
+    `;
+  }}
+`;

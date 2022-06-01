@@ -1,9 +1,9 @@
 // Dependencies
 import React, { useContext } from 'react';
-import { StatusBar } from 'react-native';
+import { ScrollView, StatusBar } from 'react-native';
 import { ThemeContext } from 'styled-components';
 import { assets } from '../../assets';
-import { HighLightCard } from '../../components';
+import { HighLightCard, TransactionCard } from '../../components';
 
 import {
   Container,
@@ -16,6 +16,8 @@ import {
   PowerIcon,
   RightContainer,
   CardContainer,
+  TransactionsContainer,
+  ListTitle,
 } from './styles';
 
 export function Dashboard() {
@@ -57,6 +59,16 @@ export function Dashboard() {
           transactionValue="R$ 1900,00"
         />
       </CardContainer>
+
+      <TransactionsContainer>
+        <ListTitle>Listagem</ListTitle>
+
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <TransactionCard />
+          <TransactionCard />
+          <TransactionCard />
+        </ScrollView>
+      </TransactionsContainer>
     </Container>
   );
 }

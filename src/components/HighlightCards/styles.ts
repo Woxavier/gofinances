@@ -24,7 +24,7 @@ export const Container = styled.View<TransactionTypeInterface>`
 export const TopContainer = styled.View`
   justify-content: space-between;
   flex-direction: row;
-  margin-bottom: 80px;
+  margin-bottom: 50px;
 `;
 
 export const CardValue = styled.Text<TransactionTypeInterface>`
@@ -57,7 +57,7 @@ export const ContentContainer = styled.View`
     const { metrics } = theme;
 
     return css`
-      margin-bottom: ${metrics.doubleSpace}px;
+      margin-bottom: ${metrics.doubleSpace * 2}px;
     `;
   }}
 `;
