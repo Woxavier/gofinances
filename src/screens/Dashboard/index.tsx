@@ -1,9 +1,11 @@
 // Dependencies
 import React, { useContext } from 'react';
-import { ScrollView, StatusBar } from 'react-native';
+import { FlatList, StatusBar } from 'react-native';
 import { ThemeContext } from 'styled-components';
 import { assets } from '../../assets';
 import { HighLightCard, TransactionCard } from '../../components';
+import { formatTransactionCardData } from '../../utils/formatTransactionData';
+import { data as transactioData } from './data';
 
 import {
   Container,
@@ -22,6 +24,16 @@ import {
 
 export function Dashboard() {
   const { colors } = useContext(ThemeContext);
+
+  function renderItem({ item }: any) {
+    const { date, info, title, value } = item;
+
+    return (
+      <TransactionCard date={date} info={info} title={title} value={value} />
+    );
+  }
+
+  const formattedData = formatTransactionCardData(transactioData);
 
   return (
     <Container>
@@ -63,11 +75,11 @@ export function Dashboard() {
       <TransactionsContainer>
         <ListTitle>Listagem</ListTitle>
 
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <TransactionCard />
-          <TransactionCard />
-          <TransactionCard />
-        </ScrollView>
+        <FlatList
+          data={formattedData}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        />
       </TransactionsContainer>
     </Container>
   );

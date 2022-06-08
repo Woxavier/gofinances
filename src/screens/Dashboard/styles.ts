@@ -28,7 +28,7 @@ export const CardContainer = styled.ScrollView`
       padding-right: ${metrics.doubleSpace}px;
       flex-direction: row;
       position: absolute;
-      margin-top: 50%;
+      margin-top: 45%;
     `;
   }}
 `;
@@ -126,7 +126,7 @@ export const TransactionsContainer = styled.View`
     return css`
       flex: 1;
       padding: ${metrics.doubleSpace}px;
-      margin-top: 20%;
+      margin-top: 10%;
     `;
   }}
 `;

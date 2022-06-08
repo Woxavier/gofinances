@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components/native';
 import { Feather } from '@expo/vector-icons';
 
+interface ValuePropsInterface {
+  theme: any;
+  value: number;
+}
+
 export const Container = styled.View`
   ${props => {
     const { theme } = props;
@@ -27,16 +32,16 @@ export const TransactionTitle = styled.Text`
   }}
 `;
 
-export const Value = styled.Text`
+export const Value = styled.Text<ValuePropsInterface>`
   ${props => {
-    const { theme } = props;
+    const { theme, value } = props;
     const { metrics, colors } = theme;
 
     return css`
       margin-top: ${metrics.space}px;
       font-weight: bold;
       font-size: ${metrics.doubleSpace}px;
-      color: ${colors.attention};
+      color: ${value > 0 ? colors.success : colors.attention};
       margin-bottom: ${metrics.doubleSpace}px;
     `;
   }}

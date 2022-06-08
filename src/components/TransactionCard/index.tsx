@@ -11,20 +11,35 @@ import {
   Value,
 } from './styles';
 
-export function TransactionCard() {
+export interface TransactionCardInterface {
+  title: string;
+  value: number;
+  info: {
+    iconName: string;
+    transaction: string;
+  };
+  date: string;
+}
+
+export function TransactionCard(props: TransactionCardInterface) {
+  const { title, value, info, date } = props;
+  const formattedValue = value.toLocaleString('pt-br', {
+    style: 'currency',
+    currency: 'BRL',
+  });
   return (
     <Container>
-      <TransactionTitle>Desenvolvimento de site</TransactionTitle>
-      <Value>R$ 12.000,00</Value>
+      <TransactionTitle>{title}</TransactionTitle>
+      <Value value={value}>{formattedValue}</Value>
 
       <Footer>
         <Leftcontainer>
-          <Icon name="dollar-sign" size={20} />
-          <TransactionInfo>Vendas</TransactionInfo>
+          <Icon name={info?.iconName} size={20} />
+          <TransactionInfo>{info?.transaction}</TransactionInfo>
         </Leftcontainer>
 
         <View>
-          <TransactionDate>13/04/2020</TransactionDate>
+          <TransactionDate>{date}</TransactionDate>
         </View>
       </Footer>
     </Container>
