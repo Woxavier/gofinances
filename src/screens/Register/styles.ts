@@ -45,8 +45,17 @@ export const Content = styled.View`
     const { metrics } = theme;
 
     return css`
-      margin-top: ${metrics.doubleSpace * 1.5}px;
-      padding-horizontal: ${metrics.doubleSpace}px;
+      flex: 1;
+      padding: ${metrics.doubleSpace}px;
+      justify-content: space-between;
+      margin-bottom: ${metrics.doubleSpace}px;
     `;
   }}
+`;
+
+export const Fields = styled.View``;
+
+export const TransactionTypeContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;

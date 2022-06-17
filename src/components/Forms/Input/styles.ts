@@ -11,6 +11,7 @@ export const Container = styled(TextInput)`
       background-color: ${colors.shape};
 
       margin-bottom: ${metrics.space}px;
+      color: ${colors.text};
 
       font-size: 14px;
 
